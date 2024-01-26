@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-{% load staticfiles %}
+{% load static %}
 
 <html>
   <head>
@@ -13,6 +13,33 @@
       hey there partner! <br />
       <strong>{{ boldmessage }}</strong><br />
     </div>
+  
+    <div>
+      {% if categories %}
+        <h2>Most Liked Categories</h2>
+        <ul>
+          {%for category in categories%}
+            <li>
+              <a href="/rango/category/{{ category.slug }}/">{{ category.name }}</a>
+            </li>
+          {%endfor%}
+        </ul>
+      {%else%}
+        <strong>There are no present categories present.</strong>
+      {%endif%}
+
+      {% if page %}
+        <h2>Most Popular Pages</h2>
+        <ul>
+          {%for page in page%}
+            <li>
+              <a href="{{page.url}}">{{ page.title }}</a>
+            </li>
+          {%endfor%}
+        </ul>
+      {%else%}
+        <strong>There are no present pages present.</strong>
+      {%endif%}
 
     <div>
       <a href="/rango/about/">About</a><br />
