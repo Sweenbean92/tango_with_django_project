@@ -21,28 +21,28 @@
       {% if categories %}
         <h2>Most Liked Categories</h2>
         <ul>
-          {%for category in categories%}
+          {% for category in categories %}
             <li>
               <a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
             </li>
-          {%endfor%}
+          {% endfor %}
         </ul>
-      {%else%}
+      {% else %}
         <strong>There are no present categories present.</strong>
-      {%endif%}
+      {% endif %}
 
       {% if page %}
         <h2>Most Popular Pages</h2>
         <ul>
-          {%for page in page%}
+          {% for page in page %}
             <li>
-              <a href="{{page.url}}">{{ page.title }}</a>
+              <a href="{{ page.url }}">{{ page.title }}</a>
             </li>
-          {%endfor%}
+          {% endfor %}
         </ul>
-      {%else%}
+      {% else %}
         <strong>There are no present pages present.</strong>
-      {%endif%}
+      {% endif %}
 
     <div>
       <img src="{% static 'images/head.PNG' %}" alt="Picture of Nichijou" />

@@ -66,7 +66,6 @@ def add_category(request):
 
 @login_required
 def add_page(request, category_name_slug):
-
     try:
         category = Category.objects.get(slug=category_name_slug)
     except Category.DoesNotExist:
@@ -163,7 +162,7 @@ def visitor_cookie_handler(request):
     last_visit_time = datetime.strptime(last_visit_cookie[:-7], '%Y-%m-%d %H:%M:%S')
 
     if (datetime.now() - last_visit_time).days>0:
-        ++visits
+        visits = visits + 1
         request.session['last_visit'] =  str(datetime.now())
     else:
         request.session['last_visit'] =  last_visit_cookie
